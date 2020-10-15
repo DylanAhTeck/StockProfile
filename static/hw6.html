@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href= "/static/hw6.css"/>
+    <!-- <link rel="stylesheet" href= "hw6.css"/>  -->
+    <title>title</title>
+    <!-- <script src="hw6.js"></script> -->
+    <script src="/static/hw6.js"></script> 
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+    
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
+     
+ window.addEventListener("load", function () {
+     //not jquery!
+            // Access the form element...
+            var form = document.getElementById("form");
+
+            // ...and take over its submit event.
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // prevent form submission and reloading the page.
+
+                //your code to validate or do what you need with the form.
+            });
+});
+</script>
+    </script>
+  </head>
+  <body>
+    <div class="content-wrapper"></div>
+    <div class="search-box-wrapper">
+      <div class="search-box">
+        <form id="form" onsubmit="submitForm()">
+          <h1>Stock Search</h1>
+          <div>
+            <label for="lname" class="required"
+              >Enter Stock Ticker Symbol
+            </label>
+            <input type="text" id="ticker" name="ticker" required />
+            <div>
+              <input type="submit" value="Search" class="button" />
+              <button type="button" class="button" onclick="clearData()">Clear</button>
+            </div>
+          </div>
+        </form>
+      </div>
+     
+
+      <div class="divider">
+        <hr />
+      </div>
+
+      <div class="error-message hide">
+        <h2>Error: No record has been found, please enter a valid symbol.</h2>
+      </div>
+
+      <div class="tab-bar hide">
+        <button class="company-button tab-button button-active" onClick="onClick=toggle('company')">Company Outlook</button>
+        <button class="stock-button tab-button" onClick="onClick=toggle('stock')">Stock Summary</button>
+        <button class="charts-button tab-button" onClick="onClick=toggle('charts')">Charts</button>
+        <button class="news-button tab-button" onClick="onClick=toggle('news')">Latest News</button>
+      </div>
+
+      <div class="company-content table-content hide">
+        <table>
+          <tr>
+            <th>Company Name</th>
+            <td id="company_name_value"></td>
+          </tr>
+          <tr>
+            <th>Stock Ticker Symbol</th>
+            <td id="symbol_value"></td>
+          </tr>
+          <tr>
+            <th>Stock Exchange Code</th>
+            <td id="code_value"></td>
+          </tr>
+          <tr>
+            <th>Company Start Date</th>
+            <td id="start_date_value"></td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td id="description_value"></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="stock-content table-content hide">
+        <table>
+          <tr>
+            <th>Stock Ticker Symbol</th>
+            <td id="stock_ticker_symbol"></td>
+          </tr>
+          <tr>
+            <th>Trading Day</th>
+            <td id="stock_trading_day"></td>
+          </tr>
+          <tr>
+            <th>Previous Closing Price</th>
+            <td id="stock_closing_price"></td>
+          </tr>
+          <tr>
+            <th>Opening Price</th>
+            <td id="stock_opening_price"></td>
+          </tr>
+          <tr>
+            <th>High Price</th>
+            <td id="stock_high_price"></td>
+          </tr>
+          <tr>
+            <th>Low Price</th>
+            <td id="stock_low_price"></td>
+          </tr>
+          <tr>
+            <th>Last Price</th>
+            <td id="stock_last_price"></td>
+          </tr>
+          <tr>
+            <th>Change</th>
+            <td id="stock_change"><img id="change_img"></img></td>
+          </tr>
+          <tr>
+            <th>Change Percent</th>
+            <td id="stock_change_percent"><img id="change_percent_img"></img></td>
+          </tr>
+          <tr>
+            <th>Number of Shares Traded</th>
+            <td id="stock_number_shares_traded"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="charts-content hide">
+        <div id="container"></div>
+      </div>
+      <div class="news-content table-content hide">
+      </div>
+    </div>
+  </body>
+  <script></script>
+</html>

@@ -1,0 +1,94 @@
+<div *ngIf="isLoading" class="d-flex justify-content-center w-100 pt-5">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div
+  class="container px-sm-5 py-2 flex-column"
+  *ngIf="!isInvalid && !isLoading"
+>
+  <alert></alert>
+  <div class="d-flex w-100 p-0 justify-content-between">
+    <div>
+      <h1 class="mb-0">
+        {{ description.ticker }}
+        <i
+          [ngClass]="onWatchlist ? 'fa fa-star text-warning' : 'fa fa-star-o'"
+          (click)="toggleSave()"
+        ></i>
+      </h1>
+    </div>
+    <div [ngClass]="isPositive ? 'text-success' : 'text-danger'">
+      <h1 class="mb-0">
+        <i
+          [ngClass]="isPositive ? 'fa fa-caret-up' : 'fa fa-caret-down'"
+          aria-hidden="true"
+        ></i>
+        {{ latestPrice.last }}
+      </h1>
+    </div>
+  </div>
+  <div class="d-flex w-100 justify-content-between">
+    <div class="text-muted">
+      <h3>{{ description.name }}</h3>
+    </div>
+    <div
+      class="d-inline"
+      [ngClass]="isPositive ? 'text-success' : 'text-danger'"
+    >
+      <h3>
+        <i
+          [ngClass]="isPositive ? 'fa fa-caret-up' : 'fa fa-caret-down'"
+          aria-hidden="true"
+        ></i>
+        {{ change.toFixed(2) }} ({{ changePercentage.toFixed(2) }}%)
+      </h3>
+    </div>
+  </div>
+  <div class="d-flex w-100 justify-content-between">
+    <small class="text-muted">{{ description.exchangeCode }}</small>
+    <small class="text-muted">{{ getDateTime() }}</small>
+  </div>
+  <div class="d-flex w-100 justify-content-between">
+    <button type="button" class="btn btn-success" (click)="openDialog()">
+      Buy
+    </button>
+  </div>
+  <div class="d-flex w-100 justify-content-center">
+    <div
+      class="text-muted"
+      [ngClass]="marketIsOpen ? 'green-highlight' : 'red-highlight'"
+    >
+      {{
+        marketIsOpen
+          ? "Market is open"
+          : "Market closed on " + timestampAsString
+      }}
+    </div>
+  </div>
+  <mat-tab-group mat-stretch-tabs class="w-100 mt-4">
+    <mat-tab label="Summary">
+      <app-summary
+        [description]="description"
+        [latestPrice]="latestPrice"
+        [marketIsOpen]="marketIsOpen"
+        [ticker]="ticker"
+      ></app-summary>
+    </mat-tab>
+    <mat-tab label="Top News">
+      <app-topnews [ticker]="ticker"></app-topnews>
+    </mat-tab>
+    <mat-tab label="Charts">
+      <ng-template matTabContent>
+        <app-charts
+          [marketIsOpen]="marketIsOpen"
+          [ticker]="ticker"
+        ></app-charts>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div class="container px-5 py-5 flex-column" *ngIf="isInvalid && !isLoading">
+  <div class="alert alert-danger text-center text-dark" role="alert">
+    No results found. Please enter valid Ticker.
+  </div>
+</div>

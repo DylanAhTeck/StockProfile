@@ -1,0 +1,43 @@
+<div class="container justify-content-center top-third-margin">
+  <div class="justify-content-center my-5 d-flex flex-wrap h-50">
+    <h1 class="title">STOCK SEARCH</h1>
+  </div>
+  <form>
+    <div class="row no-gutters mt-3 align-items-center justify-content-center">
+      <div class="col max-width">
+        <input
+          class="form-control rounded-pill pr-5 purple-bg"
+          type="search"
+          placeholder="Enter stock name"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayTicker">
+          <!-- <mat-option *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+          </mat-option> -->
+          <ng-container *ngIf="!isLoading">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option.ticker }} | {{ option.name }}
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+      </div>
+      <div class="col-auto">
+        <button
+          class="btn btn-outline-light text-dark border-0 rounded-pill ml-n5 mr-2"
+          type="button"
+          (click)="onSubmit()"
+        >
+          <i class="fa fa-search purple-text"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

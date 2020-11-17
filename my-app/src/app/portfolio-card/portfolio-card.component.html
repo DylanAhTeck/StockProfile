@@ -1,0 +1,71 @@
+<div class="card text-center my-3">
+  <div class="card-header text-left" (click)="openDetails()">
+    <h1 class="d-inline mr-2">{{ portfolio.ticker }}</h1>
+    <h3 class="d-inline">{{ portfolio.name }}</h3>
+  </div>
+  <div class="card-body p-0 py-2">
+    <div class="row m-0">
+      <div class="col-sm-6 justify-content-between">
+        <div class="row justify-content-between px-2">
+          <div>Quantity:</div>
+          <div>{{ portfolio.quantity }}</div>
+        </div>
+      </div>
+      <div class="col-sm-6 justify-content-between">
+        <div class="row justify-content-between px-2">
+          <div>Change:</div>
+          <div [ngClass]="getChange() >= 0 ? 'text-success' : 'text-danger'">
+            <i
+              [ngClass]="
+                getChange() >= 0 ? 'fa fa-caret-up' : 'fa fa-caret-down'
+              "
+              aria-hidden="true"
+            ></i>
+            {{ getChange().toFixed(2) }}
+          </div>
+        </div>
+        getChange()
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-sm-6 justify-content-between">
+        <div class="row justify-content-between px-2">
+          <div>Avg. Cost/Shares:</div>
+          <div>{{ portfolio.averageCostPerShare.toFixed(2) }}</div>
+        </div>
+      </div>
+      <div class="col-sm-6 justify-content-between">
+        <div class="row justify-content-between px-2">
+          <div>Current Price:</div>
+          <div [ngClass]="getChange() >= 0 ? 'text-success' : 'text-danger'">
+            {{ latestPrice.last.toFixed(2) }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-sm-6 justify-content-between">
+        <div class="row justify-content-between px-2">
+          <div>Total Cost:</div>
+          <div>{{ portfolio.totalCost.toFixed(2) }}</div>
+        </div>
+      </div>
+      <div class="col-sm-6 justify-content-between">
+        <div class="row justify-content-between px-2">
+          <div>Market Value:</div>
+          <div [ngClass]="getChange() >= 0 ? 'text-success' : 'text-danger'">
+            {{ getMarketValue().toFixed(2) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-right p-2">
+    <button class="btn btn-primary btn-sm mx-1" (click)="openDialog(true)">
+      Buy
+    </button>
+    <button class="btn btn-danger btn-sm mx-1" (click)="openDialog(false)">
+      Sell
+    </button>
+  </div>
+</div>

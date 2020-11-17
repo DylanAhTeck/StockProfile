@@ -1,0 +1,92 @@
+<div class="container" *ngFor="let article of Articles; let i = index">
+  <div class="row no-gutters my-3" *ngIf="i % 2 == 0">
+    <div class="col-sm-6" *ngIf="validArticle(Articles[i])">
+      <app-news-card
+        *ngIf="Articles[i]"
+        [Article]="Articles[i]"
+      ></app-news-card>
+    </div>
+    <div
+      class="col-sm-6"
+      *ngIf="i + 1 < Articles.length && validArticle(Articles[i + 1])"
+    >
+      <app-news-card
+        *ngIf="Articles[i + 1]"
+        [Article]="Articles[i + 1]"
+      ></app-news-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container" *ngIf="Articles">
+  <div class="row no-gutters my-3">
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[0]"
+        [Article]="Articles[0]"
+      ></app-news-card>
+    </div>
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[1]"
+        [Article]="Articles[1]"
+      ></app-news-card>
+    </div>
+  </div>
+  <div class="row no-gutters my-3">
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[2]"
+        [Article]="Articles[2]"
+      ></app-news-card>
+    </div>
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[3]"
+        [Article]="Articles[3]"
+      ></app-news-card>
+    </div>
+  </div>
+  <div class="row no-gutters my-3">
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[4]"
+        [Article]="Articles[4]"
+      ></app-news-card>
+    </div>
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[5]"
+        [Article]="Articles[5]"
+      ></app-news-card>
+    </div>
+  </div>
+  <div class="row no-gutters my-3">
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[6]"
+        [Article]="Articles[6]"
+      ></app-news-card>
+    </div>
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[7]"
+        [Article]="Articles[7]"
+      ></app-news-card>
+    </div>
+  </div>
+  <div class="row no-gutters my-3">
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[8]"
+        [Article]="Articles[8]"
+      ></app-news-card>
+    </div>
+    <div class="col-sm-6">
+      <app-news-card
+        *ngIf="Articles[9]"
+        [Article]="Articles[9]"
+      ></app-news-card>
+    </div>
+  </div>
+</div> -->

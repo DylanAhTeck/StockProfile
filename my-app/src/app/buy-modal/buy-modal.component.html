@@ -1,0 +1,31 @@
+<button
+  type="button"
+  class="close m-0 p-0 align-self-end"
+  style="outline: none"
+  aria-label="Close"
+  (click)="closeDialog()"
+>
+  <span aria-hidden="true">&times;</span>
+</button>
+<p mat-dialog-title style="width: 420px">{{ description.ticker }}</p>
+<hr />
+<div mat-dialog-content>
+  <p>Current Price: {{ latestPrice.last }}</p>
+  <div class="d-inline">
+    Quantity:
+    <input matInput type="number" value="0" [formControl]="myControl" />
+  </div>
+</div>
+<hr class="mb-0" />
+<div class="mat-dialog-actions justify-content-between">
+  <div>Total: {{ (myControl.value * latestPrice.last).toFixed(2) }}</div>
+  <button
+    mat-button
+    type="button"
+    class="btn btn-success"
+    [disabled]="buyDisabled"
+    (click)="closeModal()"
+  >
+    {{ isBuy ? "Buy" : "Sell" }}
+  </button>
+</div>

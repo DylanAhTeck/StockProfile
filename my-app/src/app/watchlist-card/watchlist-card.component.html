@@ -1,0 +1,53 @@
+<div class="card w-100 my-3" (click)="openDetails()">
+  <div class="card-body mt-0 pt-0 ml-1 pl-1 mr-1 pr-1">
+    <button
+      type="button"
+      class="close m-0 p-0 align-self-end"
+      aria-label="Close"
+      (click)="delete()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="row w-100 m-0 justify-content-between">
+      <h2 class="card-title m-0">{{ watchlist.ticker.toUpperCase() }}</h2>
+      <h2
+        [ngClass]="
+          watchlist.change > 0
+            ? 'text-success'
+            : watchlist.change < 0
+            ? 'text-danger'
+            : 'text-dark'
+        "
+        class="m-0"
+      >
+        {{ watchlist.last }}
+      </h2>
+    </div>
+    <div class="row w-100 m-0 justify-content-between">
+      <p class="card-text">{{ watchlist.name }}</p>
+      <p
+        [ngClass]="
+          watchlist.change > 0
+            ? 'text-success'
+            : watchlist.change < 0
+            ? 'text-danger'
+            : 'text-dark'
+        "
+      >
+        <i
+          [ngClass]="
+            watchlist.change > 0
+              ? 'fa fa-caret-up'
+              : watchlist.change < 0
+              ? 'fa fa-caret-down'
+              : ''
+          "
+          aria-hidden="true"
+        ></i>
+        {{ watchlist.change.toFixed(2) }} ({{
+          watchlist.changePercentage.toFixed(2)
+        }}%)
+      </p>
+    </div>
+  </div>
+</div>

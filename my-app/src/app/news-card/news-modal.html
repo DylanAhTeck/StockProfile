@@ -1,0 +1,54 @@
+<div style="max-width: 450px">
+  <button
+    type="button"
+    class="close m-0 p-0 align-self-end"
+    style="outline: none"
+    aria-label="Close"
+    (click)="closeDialog()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h1 mat-dialog-title class="m-0">{{Article.source.name }}</h1>
+  <p class="text-muted" [innerHTML]="formatDate(Article.publishedAt)"></p>
+  <hr />
+  <div mat-dialog-content>
+    <h3 class="mb-0"><strong>{{Article.title}}</strong></h3>
+    <p [innerHTML]="Article.description"></p>
+    <p class="text-muted">
+      For more details click <a [href]="Article.url" target="_blank">here</a>
+    </p>
+  </div>
+  <div class="card p-3">
+    <p>Share</p>
+    <div class="d-inline">
+      <a
+        class="twitter-share-button"
+        target="_blank"
+        [href]="getTwitterURL()"
+        data-size="large"
+      >
+        <i
+          class="fa fa-twitter"
+          aria-hidden="true"
+          style="font-size: 50px; color: #1da1f2"
+        ></i>
+      </a>
+      <script
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+
+      <a
+        target="_blank"
+        [href]="getFacebookURL()"
+        class="fb-xfbml-parse-ignore"
+      >
+        <i
+          class="fa fa-facebook-square"
+          aria-hidden="true"
+          style="font-size: 50px; color: #4267b2"
+        ></i>
+      </a>
+    </div>
+  </div>
+</div>

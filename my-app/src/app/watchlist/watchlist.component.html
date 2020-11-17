@@ -1,0 +1,17 @@
+<div class="container p-4">
+  <h1 class="mb-4">My Watchlist</h1>
+
+  <div class="container p-0" *ngFor="let watchlist of watchlists">
+    <app-watchlist-card [watchlist]="watchlist"></app-watchlist-card>
+  </div>
+
+  <div
+    class="alert alert-warning text-center"
+    *ngIf="watchlists.length == 0"
+    role="alert"
+  >
+    Currently you don't have any stock in your watchlist.
+  </div>
+</div>
+
+<app-footer></app-footer>

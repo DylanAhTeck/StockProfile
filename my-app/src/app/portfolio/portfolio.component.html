@@ -1,0 +1,17 @@
+<div class="container p-4">
+  <h1 class="mb-4">My Portfolio</h1>
+  <div class="container p-0" *ngFor="let portfolio of portfolios">
+    <app-portfolio-card
+      [portfolio]="portfolio"
+      [ticker]="portfolio.ticker"
+    ></app-portfolio-card>
+  </div>
+  <div
+    class="alert alert-warning text-center"
+    *ngIf="portfolios.length == 0"
+    role="alert"
+  >
+    Currently you don't have any stock in your portfolio.
+  </div>
+</div>
+<app-footer></app-footer>

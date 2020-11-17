@@ -1,0 +1,27 @@
+{
+  "name": "HW8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-font-awesome": "^3.1.2",
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "12.13.0"
+  }
+}
